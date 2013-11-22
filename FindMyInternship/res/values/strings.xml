@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">Find My Internship</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="image_content_description">Un Android avec un chien</string>
+    <string name="student_account">Etudiant</string>
+    <string name="company_account">Entreprise</string>
+    <string name="email">Adresse email</string>
+    <string name="password">Mot de passe</string>
+    <string name="connect">Se connecter</string>
+    <string name="action_settings">Menu</string>
+    <string name="school_name">Polytech Marseille</string>
+    <string name="Mail">E-mail :</string>
+    <string name="Password">Mot de Passe :</string>
+    <string name="Connexion">Connexion</string>
+    <string name="Name">Nom :</string>
+    <string name="FirstName">Prénom :</string>
+    <string name="Schoolcompany">Ecole / Entreprise</string>
+    <string name="Status">Vous êtes :</string>
+    <string name="AStudent">Ecole :</string>
+    <string name="ACompany">Entreprise :</string>
+    <string name="Register">Inscription</string>
+    <string name="Validate">Valider</string>
+    <string name="Cancel">Annuler</string>
+    
+    
+    
+</resources>
