@@ -25,7 +25,25 @@
     <string name="Validate">Valider</string>
     <string name="Cancel">Annuler</string>
     <string name="Confirm">Confirmez :</string>
+     <string-array name="student_array">
+        <item>Profil</item>
+        <item>Mes Annonces</item>
+        <item>Rechercher</item>
+        <item>Mon Compte</item>
+        <item>Aide</item>
+    </string-array>
     
-    
+      <string-array name="company_array">
+        <item>Profil</item>
+        <item>Offres</item>
+        <item>Candidatures</item>
+        <item>Mon Compte</item>
+        <item>Aide</item>
+    </string-array>
+     
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
     
 </resources>

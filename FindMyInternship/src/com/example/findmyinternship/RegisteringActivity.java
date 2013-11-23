@@ -40,6 +40,8 @@ public class RegisteringActivity extends Activity{
         
         final EditText TFPWD = (EditText)findViewById(R.id.Pwd_Edit);
         
+        final EditText TFCONF = (EditText)findViewById(R.id.TFCONFPWD);
+        
         final EditText TFSCHOOL = (EditText)findViewById(R.id.TextField_unvisible);
 		
         final RadioButton CB1 = (RadioButton)findViewById(R.id.checkBoxStudent);
@@ -81,7 +83,7 @@ public class RegisteringActivity extends Activity{
         	  @Override
         	  public void onClick(View v) {	
         		  
-        		  if(TFLN.getText().toString() == "" || TFFN.getText().toString() == "" || checkEmail(TFMAIL.getText().toString()) == false || (CB1.isChecked()==false && CB2.isChecked()==false) || TF1.getText().toString().length()<1)
+        		  if(TFLN.getText().toString() == "" || TFFN.getText().toString() == "" || checkEmail(TFMAIL.getText().toString()) == false || (CB1.isChecked()==false && CB2.isChecked()==false) || TF1.getText().toString().length()<1 || TFPWD.getText().toString()=="" || TFCONF.getText().toString()=="" || !TFPWD.getText().toString().equals(TFCONF.getText().toString()))
         		  {
         			  Toast.makeText(RegisteringActivity.this,"Vérifiez tous les champs", Toast.LENGTH_LONG).show();
         		  }

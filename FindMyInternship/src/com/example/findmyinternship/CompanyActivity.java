@@ -2,6 +2,7 @@ package com.example.findmyinternship;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Pattern;
 
 import com.example.findmyinternship.R;
 import com.example.findmyinternship.R.layout;
@@ -56,34 +57,44 @@ public class CompanyActivity extends Activity{
           		  //On ouvre la base de données pour écrire dedans
           	        MainActivity.getCompBdd().open();
           	        
+          	    //L'adresse Mail est correcte ?
+        	        if(checkEmail(TFMAIL.getText().toString()))
+        	        {
+        	        	//Est-ce que l'adresse Mail existe
+                		  if(MainActivity.getCompBdd().getCompanyByMail(TFMAIL.getText().toString()) != null)
+                		  {
+                			Company temp = (MainActivity.getCompBdd().getCompanyByMail(TFMAIL.getText().toString()));
+                			  
+                			  MessageDigest messageDigest = null;
+                			  try {
+                				  messageDigest = MessageDigest.getInstance("SHA-256");
+                			  } catch (NoSuchAlgorithmException e) {
+        						// TODO Auto-generated catch block
+                				  e.printStackTrace();
+                			  }	
+              					messageDigest.update(TFPWD.getText().toString().getBytes());
+              					String encryptedString = new String(messageDigest.digest());
+              				
+                			  
+                			  if(temp.getPassword().equals(encryptedString))
+                			  {
+                				  Intent intent = new Intent(CompanyActivity.this, ConnectCompanyActivity.class);
+                		      	  startActivity(intent);
+                			  }
+                			  
+                		  }
+                		  else
+                		  {
+                			  Toast.makeText(CompanyActivity.this,"Enregistrez vous !", Toast.LENGTH_LONG).show();
+                		  }
+        	        }
+        	        else
+        	        {
+        	        	Toast.makeText(CompanyActivity.this,"Adresse Mail non valide !", Toast.LENGTH_LONG).show();
+        	        }
+          	        
           		  
-          		  //Est-ce que l'adresse Mail existe
-          		  if(MainActivity.getCompBdd().getCompanyByMail(TFMAIL.getText().toString()) != null)
-          		  {
-          			Company temp = (MainActivity.getCompBdd().getCompanyByMail(TFMAIL.getText().toString()));
-          			  
-          			  MessageDigest messageDigest = null;
-          			  try {
-          				  messageDigest = MessageDigest.getInstance("SHA-256");
-          			  } catch (NoSuchAlgorithmException e) {
-  						// TODO Auto-generated catch block
-          				  e.printStackTrace();
-          			  }	
-        					messageDigest.update(TFPWD.getText().toString().getBytes());
-        					String encryptedString = new String(messageDigest.digest());
-        				
-          			  
-          			  if(temp.getPassword().equals(encryptedString))
-          			  {
-          				  Intent intent = new Intent(CompanyActivity.this, ConnectCompanyActivity.class);
-          		      	  startActivity(intent);
-          			  }
-          			  
-          		  }
-          		  else
-          		  {
-          			  Toast.makeText(CompanyActivity.this,"Enregistrez vous !", Toast.LENGTH_LONG).show();
-          		  }
+          		  
           		  
           		//On ferme la base de données
         	        MainActivity.getCompBdd().close();
@@ -91,5 +102,19 @@ public class CompanyActivity extends Activity{
         		}
         	});
 	}
+        
+        public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+  	          "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+  	          "\\@" +
+  	          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+  	          "(" +
+  	          "\\." +
+  	          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+  	          ")+"
+  	      );
+  	
+  	private boolean checkEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+  }
 
 }

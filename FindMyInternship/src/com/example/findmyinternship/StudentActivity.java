@@ -3,8 +3,10 @@ package com.example.findmyinternship;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Pattern;
 
 import com.example.findmyinternship.R;
+import com.example.findmyinternship.R.id;
 import com.example.findmyinternship.R.layout;
 
 import Model.Student;
@@ -56,34 +58,43 @@ public class StudentActivity extends Activity{
         		  //On ouvre la base de données pour écrire dedans
         	        MainActivity.getStudBdd().open();
         	        
+        	        //L'adresse Mail est correcte ?
+        	        if(checkEmail(TFMAIL.getText().toString()))
+        	        {
+        	        	//Est-ce que l'adresse Mail existe
+              		  if(MainActivity.getStudBdd().getStudentByMail(TFMAIL.getText().toString()) != null)
+              		  {
+              			  Student temp = (MainActivity.getStudBdd().getStudentByMail(TFMAIL.getText().toString()));
+              			  
+              			  MessageDigest messageDigest = null;
+              			  try {
+              				  messageDigest = MessageDigest.getInstance("SHA-256");
+              			  } catch (NoSuchAlgorithmException e) {
+      						// TODO Auto-generated catch block
+              				  e.printStackTrace();
+              			  }	
+            					messageDigest.update(TFPWD.getText().toString().getBytes());
+            					String encryptedString = new String(messageDigest.digest());
+            				
+              			  
+              			  if(temp.getPassword().equals(encryptedString))
+              			  {
+              				  Intent intent = new Intent(StudentActivity.this, ConnectStudentActivity.class);
+              		      	  startActivity(intent);
+              			  }
+              			  
+              		  }
+              		  else
+              		  {
+              			  Toast.makeText(StudentActivity.this,"Enregistrez vous !", Toast.LENGTH_LONG).show();
+              		  }
+        	        }
+        	        else
+        	        {
+        	        	Toast.makeText(StudentActivity.this,"Adresse Mail non valide !", Toast.LENGTH_LONG).show();
+        	        }
         		  
-        		  //Est-ce que l'adresse Mail existe
-        		  if(MainActivity.getStudBdd().getStudentByMail(TFMAIL.getText().toString()) != null)
-        		  {
-        			  Student temp = (MainActivity.getStudBdd().getStudentByMail(TFMAIL.getText().toString()));
-        			  
-        			  MessageDigest messageDigest = null;
-        			  try {
-        				  messageDigest = MessageDigest.getInstance("SHA-256");
-        			  } catch (NoSuchAlgorithmException e) {
-						// TODO Auto-generated catch block
-        				  e.printStackTrace();
-        			  }	
-      					messageDigest.update(TFPWD.getText().toString().getBytes());
-      					String encryptedString = new String(messageDigest.digest());
-      				
-        			  
-        			  if(temp.getPassword().equals(encryptedString))
-        			  {
-        				  Intent intent = new Intent(StudentActivity.this, ConnectStudentActivity.class);
-        		      	  startActivity(intent);
-        			  }
-        			  
-        		  }
-        		  else
-        		  {
-        			  Toast.makeText(StudentActivity.this,"Enregistrez vous !", Toast.LENGTH_LONG).show();
-        		  }
+        		  
         		  
         		//On ferme la base de données
       	        MainActivity.getStudBdd().close();
@@ -94,5 +105,19 @@ public class StudentActivity extends Activity{
 
 		
 	}
+	
+	public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+	          "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+	          "\\@" +
+	          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+	          "(" +
+	          "\\." +
+	          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+	          ")+"
+	      );
+	
+	private boolean checkEmail(String email) {
+      return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+}
 
 }

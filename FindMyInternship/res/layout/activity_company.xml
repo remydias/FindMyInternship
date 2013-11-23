@@ -23,7 +23,6 @@
             android:layout_width="450dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="33dp"
             android:ems="10"
             android:inputType="textEmailAddress" >
@@ -55,20 +54,20 @@
             android:id="@+id/Connexion_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/FN_edit"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="29dp"
             android:text="@string/Connexion" />
 
         <Button
             android:id="@+id/button_Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/Connexion_button"
-            android:layout_alignBottom="@+id/Connexion_button"
-            android:layout_marginRight="46dp"
-            android:layout_toLeftOf="@+id/Connexion_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginLeft="36dp"
             android:text="@string/Register" />
 
     </RelativeLayout>

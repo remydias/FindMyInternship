@@ -52,16 +52,6 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/Connexion_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/FN_edit"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/Connexion" />
-
-        <Button
             android:id="@+id/button_Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,6 +60,16 @@
             android:layout_marginRight="46dp"
             android:layout_toLeftOf="@+id/Connexion_button"
             android:text="@string/Register" />
+
+        <Button
+            android:id="@+id/Connexion_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="28dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/Connexion" />
 
     </RelativeLayout>
     

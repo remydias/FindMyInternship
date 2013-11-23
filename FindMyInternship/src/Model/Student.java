@@ -1,48 +1,29 @@
 package Model;
 
 public class Student {
-	private String lastName;
-	private String firstName;
-	private String Email;
-	private String School;
-	public String getPassword() {
-		return Password;
-	}
-	public void setPassword(String password) {
-		Password = password;
-	}
-	private String Password;
 	private int ID;
-	
 	public int getID() {
 		return ID;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int id) {
+		ID = id;
 	}
-	public Student(String lastName, String firstName, String email,
-			String school, String pwd) {
-		super();
-		this.lastName = lastName;
-		this.firstName = firstName;
-		Email = email;
-		School = school;
-		this.Password=pwd;
-	}
-	public Student() {
-		super();
-	}
+	private String LastName;
+	private String FirstName;
+	private String Email;
+	private String School;
+	private String Password;
 	public String getLastName() {
-		return lastName;
+		return LastName;
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		LastName = lastName;
 	}
 	public String getFirstName() {
-		return firstName;
+		return FirstName;
 	}
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		FirstName = firstName;
 	}
 	public String getEmail() {
 		return Email;
@@ -56,4 +37,23 @@ public class Student {
 	public void setSchool(String school) {
 		School = school;
 	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	
+	public Student(String string, String string2, String string3,
+			String string4, String string5) {
+		this.LastName=string;
+		this.FirstName=string2;
+		this.Email=string3;
+		this.School=string4;
+		this.Password=string5;
+	}
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	
 }

@@ -5,10 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
-    <application
+       	<application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -22,13 +22,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.findmyinternship.StudentActivity"></activity>
-        <activity android:name="com.example.findmyinternship.CompanyActivity"></activity>
-        <activity android:name="com.example.findmyinternship.RegisteringActivity"></activity>
-        <activity android:name="com.example.findmyinternship.ConnectStudentActivity"></activity>
-        <activity android:name="com.example.findmyinternship.ConnectCompanyActivity"></activity>
+	        <activity android:name="com.example.findmyinternship.CompanyActivity"></activity>
+	        <activity android:name="com.example.findmyinternship.RegisteringActivity"></activity>	        
+	        <activity android:name="com.example.findmyinternship.ConnectCompanyActivity"></activity>
+	        <activity android:name="com.example.findmyinternship.StudentActivity"></activity>
+       	    <activity android:name="com.example.findmyinternship.ConnectStudentActivity"></activity>
+       	    <activity android:name="com.example.findmyinternship.Profile"></activity>
+       	    <activity android:name="com.example.findmyinternship.Student_account"></activity>
+       	    <activity android:name="com.example.findmyinternship.StudentHelp"></activity>
+	        
         
-    </application>
-    
-
+    	</application>
 </manifest>
+
+
+
+
+

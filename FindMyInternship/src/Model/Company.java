@@ -1,37 +1,41 @@
 package Model;
 
 public class Company {
-	private String lastName;
-	private String firstName;
+	private String LastName;
+	private String FirstName;
 	private String Email;
 	private String Company;
 	private String Password;
-	public String getPassword() {
-		return Password;
-	}
-	public void setPassword(String password) {
-		Password = password;
-	}
 	private int ID;
-
 	
+	public Company(String string, String string2, String string3,
+			String string4, String string5) {
+		this.LastName=string;
+		this.FirstName=string2;
+		this.Email=string3;
+		this.Company=string4;
+		this.Password=string5;
+	}
+	public Company() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getID() {
 		return ID;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		ID = id;
 	}
 	public String getLastName() {
-		return lastName;
+		return LastName;
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		LastName = lastName;
 	}
 	public String getFirstName() {
-		return firstName;
+		return FirstName;
 	}
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		FirstName = firstName;
 	}
 	public String getEmail() {
 		return Email;
@@ -39,24 +43,16 @@ public class Company {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public String getCompany() {
+	public String getSchool() {
 		return Company;
 	}
-	public void setCompany(String company) {
-		Company = company;
+	public void setSchool(String comp) {
+		Company = comp;
 	}
-	
-	public Company(String lastName, String firstName, String email,
-			String company,String pwd) {
-		super();
-		this.lastName = lastName;
-		this.firstName = firstName;
-		Email = email;
-		Company = company;
-		this.Password=pwd;
+	public String getPassword() {
+		return Password;
 	}
-	public Company() {
-		// TODO Auto-generated constructor stub
+	public void setPassword(String password) {
+		Password = password;
 	}
-
 }
