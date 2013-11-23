@@ -5,6 +5,13 @@ public class Student {
 	private String firstName;
 	private String Email;
 	private String School;
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	private String Password;
 	private int ID;
 	
 	public int getID() {
@@ -14,12 +21,13 @@ public class Student {
 		ID = iD;
 	}
 	public Student(String lastName, String firstName, String email,
-			String school) {
+			String school, String pwd) {
 		super();
 		this.lastName = lastName;
 		this.firstName = firstName;
 		Email = email;
 		School = school;
+		this.Password=pwd;
 	}
 	public Student() {
 		super();

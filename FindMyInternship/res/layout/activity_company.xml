@@ -32,7 +32,7 @@
         </EditText>
 
         <EditText
-            android:id="@+id/FN_editt"
+            android:id="@+id/FN_edit"
             android:layout_width="450dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/LN_edit"
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/FN_editt"
+            android:layout_below="@+id/FN_edit"
             android:layout_marginRight="60dp"
             android:layout_marginTop="18dp"
             android:text="@string/Connexion" />

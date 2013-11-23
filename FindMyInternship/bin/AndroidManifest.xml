@@ -25,6 +25,8 @@
         <activity android:name="com.example.findmyinternship.StudentActivity"></activity>
         <activity android:name="com.example.findmyinternship.CompanyActivity"></activity>
         <activity android:name="com.example.findmyinternship.RegisteringActivity"></activity>
+        <activity android:name="com.example.findmyinternship.ConnectStudentActivity"></activity>
+        <activity android:name="com.example.findmyinternship.ConnectCompanyActivity"></activity>
         
     </application>
     

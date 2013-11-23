@@ -1,5 +1,8 @@
 package Model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -21,6 +24,8 @@ public class StudentBDD {
 	private static final int NUM_USER_MAIL = 3;
 	private static final String USER_School = "School";
 	private static final int NUM_USER_School = 4;
+	private static final String USER_Pwd = "Password";
+	private static final int NUM_USER_Pwd = 5;
  
 	private SQLiteDatabase bdd;
  
@@ -45,7 +50,7 @@ public class StudentBDD {
 		return bdd;
 	}
  
-	public long insertStudent(Student stud){
+	public long insertStudent(Student stud) throws NoSuchAlgorithmException{
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();
 		//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
@@ -53,11 +58,17 @@ public class StudentBDD {
 		values.put(USER_FIRSTNAME, stud.getFirstName());
 		values.put(USER_MAIL, stud.getEmail());
 		values.put(USER_School, stud.getSchool());
+		
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+		messageDigest.update(stud.getPassword().getBytes());
+		String encryptedString = new String(messageDigest.digest());
+		
+		values.put(USER_Pwd, encryptedString);
 		//on insère l'objet dans la BDD via le ContentValues
 		return bdd.insert(USER_TABLE, null, values);
 	}
  
-	public int updateStudent(int id, Student stud){
+	public int updateStudent(int id, Student stud) throws NoSuchAlgorithmException{
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 				ContentValues values = new ContentValues();
 				//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
@@ -65,6 +76,13 @@ public class StudentBDD {
 				values.put(USER_FIRSTNAME, stud.getFirstName());
 				values.put(USER_MAIL, stud.getEmail());
 				values.put(USER_School, stud.getSchool());
+				MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+				messageDigest.update(stud.getPassword().getBytes());
+				String encryptedString = new String(messageDigest.digest());
+				
+				values.put(USER_Pwd, encryptedString);
+				
+				
 		return bdd.update(USER_TABLE, values,USER_ID + " = " +id, null);
 	}
  
@@ -75,7 +93,13 @@ public class StudentBDD {
  
 	public Student getStudentByName(String name){
 		//Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-		Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_School}, USER_LASTNAME + " LIKE \"" + name +"\"", null, null, null, null);
+		Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_School,USER_Pwd}, USER_LASTNAME + " LIKE \"" + name +"\"", null, null, null, null,null);
+		return cursorToStudent(c);
+	}
+	
+	public Student getStudentByMail(String mail){
+		//Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+		Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_School,USER_Pwd}, USER_MAIL + " LIKE \"" + mail +"\"", null, null, null, null,null);
 		return cursorToStudent(c);
 	}
  
@@ -95,6 +119,7 @@ public class StudentBDD {
 		stud.setFirstName(c.getString(NUM_USER_FIRSTNAME));
 		stud.setEmail(c.getString(NUM_USER_MAIL));
 		stud.setSchool(c.getString(NUM_USER_School));
+		stud.setPassword(c.getString(NUM_USER_Pwd));
 		//On ferme le cursor
 		c.close();
  

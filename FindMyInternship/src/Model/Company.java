@@ -5,6 +5,13 @@ public class Company {
 	private String firstName;
 	private String Email;
 	private String Company;
+	private String Password;
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
 	private int ID;
 
 	
@@ -37,6 +44,19 @@ public class Company {
 	}
 	public void setCompany(String company) {
 		Company = company;
+	}
+	
+	public Company(String lastName, String firstName, String email,
+			String company,String pwd) {
+		super();
+		this.lastName = lastName;
+		this.firstName = firstName;
+		Email = email;
+		Company = company;
+		this.Password=pwd;
+	}
+	public Company() {
+		// TODO Auto-generated constructor stub
 	}
 
 }
