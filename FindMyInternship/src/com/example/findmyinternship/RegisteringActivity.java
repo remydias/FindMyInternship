@@ -50,17 +50,24 @@ public class RegisteringActivity extends Activity{
         final TextView TV1 = (TextView)findViewById(R.id.textView_unvisible);
         final EditText TF1 = (EditText)findViewById(R.id.TextField_unvisible);
         
+        final TextView TVDesc = (TextView)findViewById(R.id.desc);
+        final EditText TFDesc = (EditText)findViewById(R.id.champdesc);
+        
         Button buttonVal = (Button)findViewById(R.id.buttonValidRegister);
         Button buttonCanc = (Button)findViewById(R.id.buttonCancelRegister);
         
         TV1.setVisibility(View.INVISIBLE);
         TF1.setVisibility(View.INVISIBLE);
+        TVDesc.setVisibility(View.INVISIBLE);
+        TFDesc.setVisibility(View.INVISIBLE);
         
         CB2.setOnClickListener(new OnClickListener() {
 			
       	  @Override
       	  public void onClick(View v) {	
       		  CB1.setChecked(false);
+      		  TVDesc.setVisibility(View.INVISIBLE);
+      		  TFDesc.setVisibility(View.INVISIBLE);
       		  TV1.setVisibility(View.VISIBLE);
       		  TV1.setText("Ecole :");
       		  TF1.setVisibility(View.VISIBLE);
@@ -73,8 +80,11 @@ public class RegisteringActivity extends Activity{
         	  public void onClick(View v) {
         		  CB2.setChecked(false);
         		  	TV1.setVisibility(View.VISIBLE);
+        		  	TVDesc.setVisibility(View.VISIBLE);
         		  	TV1.setText("Entreprise :");
+        		  	TVDesc.setText("Description :");
         		   TF1.setVisibility(View.VISIBLE);
+        		   TFDesc.setVisibility(View.VISIBLE);
         		}
         	});
         
@@ -83,7 +93,7 @@ public class RegisteringActivity extends Activity{
         	  @Override
         	  public void onClick(View v) {	
         		  
-        		  if(TFLN.getText().toString() == "" || TFFN.getText().toString() == "" || checkEmail(TFMAIL.getText().toString()) == false || (CB1.isChecked()==false && CB2.isChecked()==false) || TF1.getText().toString().length()<1 || TFPWD.getText().toString()=="" || TFCONF.getText().toString()=="" || !TFPWD.getText().toString().equals(TFCONF.getText().toString()))
+        		  if(TFLN.getText().toString() == "" || TFFN.getText().toString() == "" || checkEmail(TFMAIL.getText().toString()) == false || (CB1.isChecked()==false && CB2.isChecked()==false) || TF1.getText().toString().length()<1 || TFPWD.getText().toString()=="" || TFDesc.getText().toString()==""|| TFCONF.getText().toString()=="" || !TFPWD.getText().toString().equals(TFCONF.getText().toString()))
         		  {
         			  Toast.makeText(RegisteringActivity.this,"Vérifiez tous les champs", Toast.LENGTH_LONG).show();
         		  }
@@ -113,7 +123,7 @@ public class RegisteringActivity extends Activity{
         		  }
         		  else
         		  {
-        			    Company comp = new Company(TFLN.getText().toString(), TFFN.getText().toString(), TFMAIL.getText().toString(), TFSCHOOL.getText().toString(),TFPWD.getText().toString());
+        			    Company comp = new Company(TFLN.getText().toString(), TFFN.getText().toString(), TFMAIL.getText().toString(), TFSCHOOL.getText().toString(),TFPWD.getText().toString(),TFDesc.getText().toString());
             	        //On ouvre la base de données pour écrire dedans
             	        MainActivity.getCompBdd().open();
             	        

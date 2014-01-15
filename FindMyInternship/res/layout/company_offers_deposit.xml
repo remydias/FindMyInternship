@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/title_textView_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="27dp"
+            android:text="@string/title" />
+
+        <EditText
+            android:id="@+id/title_textfield_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/title_textView_deposit"
+            android:layout_marginLeft="19dp"
+            android:layout_toRightOf="@+id/title_textView_deposit"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/desc_textview_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/title_textView_deposit"
+            android:layout_below="@+id/title_textView_deposit"
+            android:layout_marginTop="31dp"
+            android:text="@string/description" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/desc_textview_deposit"
+            android:layout_alignParentRight="true"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:paddingRight="10dp" />
+
+        <TextView
+            android:id="@+id/skills_textview_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/desc_textview_deposit"
+            android:layout_below="@+id/desc_textview_deposit"
+            android:layout_marginTop="34dp"
+            android:text="@string/skills" />
+
+        <ExpandableListView
+            android:id="@+id/expandableListView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/skills_textview_deposit" >
+        </ExpandableListView>
+
+        <TextView
+            android:id="@+id/lblListHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/skills_textview_deposit"
+            android:layout_alignBottom="@+id/skills_textview_deposit"
+            android:layout_alignLeft="@+id/expandableListView1"
+            android:text="TextView" />
+
+    </RelativeLayout>
+
+</LinearLayout>

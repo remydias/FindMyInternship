@@ -64,6 +64,10 @@ public class CompanyActivity extends Activity{
                 		  if(MainActivity.getCompBdd().getCompanyByMail(TFMAIL.getText().toString()) != null)
                 		  {
                 			Company temp = (MainActivity.getCompBdd().getCompanyByMail(TFMAIL.getText().toString()));
+                			if(temp.getSchool()==null)
+                				Toast.makeText(CompanyActivity.this,"YOPPPPPPP", Toast.LENGTH_LONG).show();
+                			else
+                			{
                 			  
                 			  MessageDigest messageDigest = null;
                 			  try {
@@ -79,8 +83,15 @@ public class CompanyActivity extends Activity{
                 			  if(temp.getPassword().equals(encryptedString))
                 			  {
                 				  Intent intent = new Intent(CompanyActivity.this, ConnectCompanyActivity.class);
-                		      	  startActivity(intent);
+                				  Bundle extras = new Bundle();
+                				  extras.putString("name", temp.getSchool());
+                				  extras.putString("cperson", temp.getLastName()+" "+temp.getFirstName());
+                				  extras.putString("desc", temp.getDescription());
+                				  intent.putExtras(extras);
+
+                				  startActivity(intent);
                 			  }
+                			}
                 			  
                 		  }
                 		  else

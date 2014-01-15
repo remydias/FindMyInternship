@@ -30,6 +30,7 @@
        	    <activity android:name="com.example.findmyinternship.Profile"></activity>
        	    <activity android:name="com.example.findmyinternship.Student_account"></activity>
        	    <activity android:name="com.example.findmyinternship.StudentHelp"></activity>
+       	    <activity android:name="com.example.findmyinternship.CompanyOffersDeposit"></activity>
 	        
         
     	</application>

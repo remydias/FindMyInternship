@@ -6,24 +6,39 @@ public class Company {
 	private String Email;
 	private String Company;
 	private String Password;
+	public String getDescription() {
+		return Description;
+	}
+	public void setDescription(String description) {
+		Description = description;
+	}
+	private String Description;
 	private int ID;
+	private ProfilComp P;
 	
+	public ProfilComp getP() {
+		return P;
+	}
+	public void setP(ProfilComp p) {
+		P = p;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
 	public Company(String string, String string2, String string3,
-			String string4, String string5) {
+			String string4, String string5,String string6) {
 		this.LastName=string;
 		this.FirstName=string2;
 		this.Email=string3;
 		this.Company=string4;
 		this.Password=string5;
+		this.Description=string6;
 	}
 	public Company() {
 		// TODO Auto-generated constructor stub
 	}
 	public int getID() {
 		return ID;
-	}
-	public void setId(int id) {
-		ID = id;
 	}
 	public String getLastName() {
 		return LastName;
