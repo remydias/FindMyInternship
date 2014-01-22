@@ -19,6 +19,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:text="@string/student_account"
+            android:textColor="@color/black_color"
             android:textSize="16sp" />
 
         <TextView
@@ -29,6 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="17dp"
             android:text="@string/company_account"
+            android:textColor="@color/black_color"
             android:textSize="16sp" />
 
         <ImageView
@@ -41,18 +43,9 @@
             android:layout_marginLeft="20dp"
             android:src="@drawable/logo_polytech" />
 
-        <ImageButton
-            android:id="@+id/buttonCancelRegister"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/Company_description"
-            android:layout_marginTop="34dp"
-            android:layout_toRightOf="@+id/imageView1"
-            android:src="@drawable/company_img" />
-
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -62,12 +55,21 @@
 
         <ImageButton
             android:id="@+id/buttonValidRegister"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
             android:layout_below="@+id/imageView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="44dp"
             android:src="@drawable/student_img" />
+
+        <ImageButton
+            android:id="@+id/buttonCancelRegister"
+            android:layout_width="170dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Company_description"
+            android:layout_marginTop="37dp"
+            android:src="@drawable/company_img" />
 
     </RelativeLayout>
 

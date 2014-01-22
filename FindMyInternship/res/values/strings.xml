@@ -48,5 +48,8 @@
     <string name="title">Titre</string>
     <string name="description">Description</string>
     <string name="skills">Compétences</string>
+    <string name="profile">Profil</string>
+    <string name="duration">Durée</string>
+    <string name="salary">Salaire</string>
     
 </resources>

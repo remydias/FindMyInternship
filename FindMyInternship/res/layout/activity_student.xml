@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/LN_edit"
-            android:layout_width="450dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Company_description"
             android:layout_centerHorizontal="true"
@@ -33,13 +33,32 @@
 
         <EditText
             android:id="@+id/FN_edit"
-            android:layout_width="450dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/LN_edit"
             android:layout_below="@+id/textView2"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="38dp"
             android:ems="10"
             android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/button_Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/FN_edit"
+            android:layout_below="@+id/FN_edit"
+            android:layout_marginTop="25dp"
+            android:text="@string/Register" />
+
+        <Button
+            android:id="@+id/Connexion_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button_Register"
+            android:layout_alignBottom="@+id/button_Register"
+            android:layout_toRightOf="@+id/button_Register"
+            android:layout_marginLeft="30dp"
+            android:text="@string/Connexion" />
 
         <TextView
             android:id="@+id/Company_description"
@@ -47,29 +66,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="86dp"
+            android:layout_marginTop="64dp"
             android:text="@string/Mail"
             android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/button_Register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/Connexion_button"
-            android:layout_alignBottom="@+id/Connexion_button"
-            android:layout_marginRight="46dp"
-            android:layout_toLeftOf="@+id/Connexion_button"
-            android:text="@string/Register" />
-
-        <Button
-            android:id="@+id/Connexion_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="28dp"
-            android:layout_marginRight="30dp"
-            android:text="@string/Connexion" />
 
     </RelativeLayout>
     

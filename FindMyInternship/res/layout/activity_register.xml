@@ -156,16 +156,6 @@
             android:text="@string/Name"
             android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/buttonValidRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/TextField_unvisible"
-            android:layout_marginBottom="34dp"
-            android:layout_marginRight="50dp"
-            android:text="@string/Validate" />
-
         <TextView
             android:id="@+id/desc"
             android:layout_width="wrap_content"
@@ -181,10 +171,20 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/desc"
             android:layout_alignLeft="@+id/TextField_unvisible"
-            android:ems="10" >
+            android:ems="10"
+            android:inputType="textMultiLine" >
 
             <requestFocus />
         </EditText>
+
+        <Button
+            android:id="@+id/buttonValidRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/champdesc"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/checkBoxStudent"
+            android:text="@string/Validate" />
 
     </RelativeLayout>
 

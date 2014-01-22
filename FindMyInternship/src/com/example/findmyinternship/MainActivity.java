@@ -1,6 +1,7 @@
 package com.example.findmyinternship;
 
 import Model.CompanyBDD;
+import Model.OfferBDD;
 import Model.Student;
 import Model.StudentBDD;
 import android.os.Bundle;
@@ -22,9 +23,18 @@ public class MainActivity extends Activity {
     private ListView mDrawerList;
     public static StudentBDD studBdd; 
     public static CompanyBDD compBdd; 
+    public static OfferBDD offBdd; 
 
 	public static CompanyBDD getCompBdd() {
 		return compBdd;
+	}
+
+	public static OfferBDD getOffBdd() {
+		return offBdd;
+	}
+
+	public static void setOffBdd(OfferBDD offBdd) {
+		MainActivity.offBdd = offBdd;
 	}
 
 	public static void setCompBdd(CompanyBDD compBdd) {
@@ -49,6 +59,7 @@ public class MainActivity extends Activity {
 		
 		studBdd= new StudentBDD(this);
 		compBdd= new CompanyBDD(this);
+		offBdd= new OfferBDD(this);
  
 		//on récupère tous les éléments
         ImageButton buttonOui = (ImageButton)findViewById(R.id.buttonValidRegister);

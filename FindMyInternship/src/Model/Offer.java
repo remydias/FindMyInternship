@@ -1,9 +1,23 @@
 package Model;
 
 public class Offer {
+	int ID;
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	String company;
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
 	String title;
 	String description;
-	String[] competences;
+	String competences;
 	String profil;
 	String duration;
 	String salary;
@@ -20,10 +34,10 @@ public class Offer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String[] getCompetences() {
+	public String getCompetences() {
 		return competences;
 	}
-	public void setCompetences(String[] competences) {
+	public void setCompetences(String competences) {
 		this.competences = competences;
 	}
 	public String getProfil() {

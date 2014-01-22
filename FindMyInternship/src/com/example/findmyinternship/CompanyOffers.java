@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import Model.Offer;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -18,63 +19,109 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class CompanyOffers extends Fragment{
 	public  CompanyOffers() {
         // Empty constructor required for fragment subclasses
+		
     }
 
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) 
-    {
-        View rootView = inflater.inflate(R.layout.company_offers, container, false);
+    {        
+        final FrameLayout mLinearLayout =(FrameLayout)inflater.inflate(R.layout.company_offers,container, false);
         
-        final LinearLayout mLinearLayout =(LinearLayout)inflater.inflate(R.layout.company_offers,container, false);
+        Bundle b= this.getArguments();
+        
+        // if(company_name.length()<30)
+        final String company_name = b.getString("name");
         
         ListView l = (ListView)mLinearLayout.findViewById(R.id.listView1);
         
-        String[] values = new String[] { "Offre n°1", "Offre n°2", "Offre n°3" , "Offre n°4", "Offre n°5", "Offre n°6", "Offre n°7", "Offre n°8", "Offre n°9", "Offre n°10", "Offre n°11", "Offre n°12", "Offre n°13", "Offre n°14", "Offre n°15"};
+        //On récupère les offres en BDD
+        MainActivity.getOffBdd().open();
         
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-          list.add(values[i]);
+        
+        if(MainActivity.getOffBdd().getOfferByComp(company_name) != null)
+        {    	
+        	final Offer[] myOffers = MainActivity.getOffBdd().getOfferByComp(company_name);
+	        
+	        String[] values = new String[myOffers.length];
+	        
+	        for(int i=0;i<myOffers.length;i++)
+	        {
+	        	System.out.println("valll == "+myOffers[i].getTitle());
+	        	values[i]=myOffers[i].getTitle();
+	        	
+	        }
+        	Toast.makeText(this.getActivity(),values[0], Toast.LENGTH_LONG).show();
+
+	        
+	        ArrayList<String> list = new ArrayList<String>();
+	        for (int i = 0; i < values.length; i++) 
+	        {
+	          list.add(values[i]);
+	        }
+	        
+	        
+	        
+	        l.setAdapter(new ArrayAdapter<String>(mLinearLayout.getContext(), android.R.layout.simple_list_item_1,values));
+	
+	            l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	
+				@Override
+	              public void onItemClick(AdapterView<?> parent, final View view,int position, long id) 
+	              {
+	            	  Offer temp = myOffers[position];
+	            	  
+	            	  Intent intent = new Intent(getActivity(), ViewOffer.class);
+	            	  Bundle b = new Bundle();
+	            	  b.putString("company", temp.getCompany());
+	            	  b.putString("titree", temp.getTitle());
+	            	  b.putString("desc", temp.getDescription());
+	            	  b.putString("skills", temp.getCompetences());
+	            	  b.putString("profile", temp.getProfil());
+	            	  b.putString("duration", temp.getDuration());
+	            	  b.putString("salary", temp.getSalary());
+    				  intent.putExtras(b);
+
+    				  startActivity(intent);
+    				  
+    				  
+	            	  
+	            }
+	
+	            });
+	            
         }
-        
-        l.setAdapter(new ArrayAdapter<String>(mLinearLayout.getContext(), android.R.layout.simple_list_item_1,values));
-
-            l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-              @SuppressLint("NewApi")
-			@Override
-              public void onItemClick(AdapterView<?> parent, final View view,int position, long id) 
-              {
-                
-              }
-
-            });
-            
-        ImageButton img = (ImageButton)mLinearLayout.findViewById(R.id.myimageButton1);
-        
-        img.setOnClickListener(new OnClickListener() {
-			
-        	  @Override
-        	  public void onClick(View v) 
-        	  {
-        		  //Fragment fragment=new CompanyOffersDeposit();
-        		  //FragmentManager fragmentManager = getFragmentManager();
-        	      //fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-        	      
-        	      Intent intent = new Intent(mLinearLayout.getContext(), CompanyOffersDeposit.class);
-          		  startActivity(intent);
-        	  }
-        	});
-                
-        return mLinearLayout;
-    }
+	            
+	        ImageButton img = (ImageButton)mLinearLayout.findViewById(R.id.myimageButton1);
+	        
+	        img.setOnClickListener(new OnClickListener() {
+				
+	        	  @Override
+	        	  public void onClick(View v) 
+	        	  {
+	        	      Intent intent = new Intent(mLinearLayout.getContext(), CompanyOffersDeposit.class);
+	        	      Bundle extras = new Bundle();
+					  extras.putString("name", company_name);
+					  intent.putExtras(extras);
+	        	      
+	          		  startActivity(intent);
+	        	  }
+	        	});
+	                
+	        return mLinearLayout;
+      }
+	
+	
 }
+
 
 class StableArrayAdapter extends ArrayAdapter<String> {
 

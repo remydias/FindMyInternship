@@ -163,6 +163,7 @@ public class ConnectCompanyActivity extends Activity{
     	else if(position==1)
     	{
     		fragment = new CompanyOffers();
+    		fragment.setArguments(b);
     	}
     	else if(position==2)
     	{

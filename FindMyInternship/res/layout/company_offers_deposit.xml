@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+    
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent" >
 
         <TextView
             android:id="@+id/title_textView_deposit"
@@ -19,60 +24,118 @@
             android:text="@string/title" />
 
         <EditText
-            android:id="@+id/title_textfield_deposit"
-            android:layout_width="wrap_content"
+            android:id="@+id/skills_textfield_deposit"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/title_textView_deposit"
-            android:layout_marginLeft="19dp"
-            android:layout_toRightOf="@+id/title_textView_deposit"
+            android:layout_alignLeft="@+id/skills_textview_deposit"
+            android:layout_below="@+id/skills_textview_deposit"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/desc_textfield_deposit"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/desc_textview_deposit"
+            android:layout_below="@+id/desc_textview_deposit"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:paddingRight="10dp" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/title_textfield_deposit"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/title_textView_deposit"
+            android:layout_below="@+id/title_textView_deposit"
             android:ems="10" />
 
         <TextView
             android:id="@+id/desc_textview_deposit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/title_textView_deposit"
-            android:layout_below="@+id/title_textView_deposit"
-            android:layout_marginTop="31dp"
+            android:layout_alignLeft="@+id/title_textfield_deposit"
+            android:layout_below="@+id/title_textfield_deposit"
+            android:layout_marginTop="15dp"
             android:text="@string/description" />
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/desc_textview_deposit"
-            android:layout_alignParentRight="true"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:paddingRight="10dp" />
 
         <TextView
             android:id="@+id/skills_textview_deposit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/desc_textview_deposit"
-            android:layout_below="@+id/desc_textview_deposit"
-            android:layout_marginTop="34dp"
+            android:layout_alignLeft="@+id/desc_textfield_deposit"
+            android:layout_below="@+id/desc_textfield_deposit"
+            android:layout_marginTop="25dp"
             android:text="@string/skills" />
 
-        <ExpandableListView
-            android:id="@+id/expandableListView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@+id/skills_textview_deposit" >
-        </ExpandableListView>
-
         <TextView
-            android:id="@+id/lblListHeader"
+            android:id="@+id/profile_textview_deposit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/skills_textview_deposit"
-            android:layout_alignBottom="@+id/skills_textview_deposit"
-            android:layout_alignLeft="@+id/expandableListView1"
-            android:text="TextView" />
+            android:layout_alignLeft="@+id/skills_textfield_deposit"
+            android:layout_below="@+id/skills_textfield_deposit"
+            android:layout_marginTop="14dp"
+            android:text="@string/profile" />
+
+        <TextView
+            android:id="@+id/duration_textview_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/profile_textfield_deposit"
+            android:layout_below="@+id/profile_textfield_deposit"
+            android:layout_marginTop="19dp"
+            android:text="@string/duration" />
+
+        <EditText
+            android:id="@+id/profile_textfield_deposit"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/profile_textview_deposit"
+            android:layout_below="@+id/profile_textview_deposit"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/duration_textfield_deposit"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/duration_textview_deposit"
+            android:layout_below="@+id/duration_textview_deposit"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/salary_textview_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/duration_textfield_deposit"
+            android:layout_below="@+id/duration_textfield_deposit"
+            android:layout_marginTop="14dp"
+            android:text="@string/salary" />
+
+        <EditText
+            android:id="@+id/salary_textfield_deposit"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/salary_textview_deposit"
+            android:layout_below="@+id/salary_textview_deposit"
+            android:ems="10" />
+
+        <Button
+            android:id="@+id/button_deposit"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_below="@+id/salary_textfield_deposit"
+             android:layout_marginRight="18dp"
+            android:layout_marginTop="26dp"
+            android:layout_alignRight="@+id/salary_textfield_deposit"
+            android:text="@string/Validate" />
 
     </RelativeLayout>
 
 </LinearLayout>
+
+</ScrollView>

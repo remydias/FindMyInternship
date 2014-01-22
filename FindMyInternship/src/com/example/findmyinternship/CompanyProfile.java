@@ -28,6 +28,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +47,7 @@ public class CompanyProfile extends Fragment {
     {
         View rootView = inflater.inflate(R.layout.company_profile, container, false);
         
-        LinearLayout mLinearLayout =(LinearLayout)inflater.inflate(R.layout.company_profile,container, false);
+        ScrollView mLinearLayout =(ScrollView)inflater.inflate(R.layout.company_profile,container, false);
         
         ImageButton buttonImg = (ImageButton)mLinearLayout.findViewById(R.id.Company_photo);
         
