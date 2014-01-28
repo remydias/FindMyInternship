@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Student {
 	private int ID;
 	public int getID() {

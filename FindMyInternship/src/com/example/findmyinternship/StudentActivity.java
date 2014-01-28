@@ -80,6 +80,11 @@ public class StudentActivity extends Activity{
               			  if(temp.getPassword().equals(encryptedString))
               			  {
               				  Intent intent = new Intent(StudentActivity.this, ConnectStudentActivity.class);
+              				Bundle extras = new Bundle();
+              				extras.putInt("StudID", temp.getID());
+          				  extras.putString("name", temp.getSchool());
+          				  extras.putString("cperson", temp.getLastName()+" "+temp.getFirstName());
+          				  intent.putExtras(extras);
               		      	  startActivity(intent);
               			  }
               			  

@@ -92,6 +92,14 @@
             android:layout_marginRight="25dp"
             android:src="@drawable/backbutton" />
 
+            <CheckBox
+                android:id="@+id/checkstar"
+                style="?android:attr/starStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true" />
+
     </RelativeLayout>
 
 </LinearLayout>

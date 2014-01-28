@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class CompanyBDD {
 	
@@ -69,8 +70,28 @@ public class CompanyBDD {
                 
                 values.put(USER_Pwd, encryptedString);
                 values.put(USER_DESC, stud.getDescription());
-                //on insère l'objet dans la BDD via le ContentValues
-                return bdd.insert(USER_TABLE, null, values);
+                if(this.getCompanyByComp(stud.getSchool()) == null)
+                {
+                	 return bdd.insert(USER_TABLE, null, values);
+                }
+                else if(this.getCompanyByName(stud.getLastName()) != null && tabContains(this.getCompanyByComp(stud.getSchool()), stud))
+                {
+                	return 0;
+                }
+                else
+                	 return bdd.insert(USER_TABLE, null, values);
+        }
+        
+        public boolean tabContains(Company[] tab, Company s)
+        {
+        	for(int i=0;i<tab.length;i++)
+        	{
+        		if(tab[i].getLastName().equals(s.getLastName())&& tab[i].getSchool().equals(s.getSchool()) && tab[i].getFirstName().equals(s.getFirstName()))
+        		{
+        			return true;
+        		}
+        	}
+        	return false;
         }
  
         public int updateCompany(int id, Company stud) throws NoSuchAlgorithmException{
@@ -108,6 +129,12 @@ public class CompanyBDD {
                 Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_Company,USER_Pwd,USER_DESC}, USER_MAIL + " LIKE \"" + mail +"\"", null, null, null, null,null);
                 return cursorToCompany(c);
         }
+        
+        public Company[] getCompanyByComp(String comp){
+            //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+            Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_Company,USER_Pwd,USER_DESC}, USER_Company + " LIKE \"" + comp +"\"", null, null, null, null,null);
+            return cursorsToCompanies(c);
+        }
  
         //Cette méthode permet de convertir un cursor en un livre
         private Company cursorToCompany(Cursor c){
@@ -133,4 +160,41 @@ public class CompanyBDD {
                 //On retourne le livre
                 return stud;
         }
+        
+        public Company[] cursorsToCompanies(Cursor c)
+    	{
+        	Company[] liste = new Company[c.getCount()]; 
+        	//si aucun élément n'a été retourné dans la requête, on renvoie null 
+        	if (c.getCount() == 0) 
+        	{ 
+        		Company s = new Company(); 
+        		Log.e("skat", "Aucune donnée a transtyper"); 
+        		return(null); 
+        
+        	} 
+        	else 
+        	{ 
+        		//Sinon on se place sur le premier élément 
+        		c.moveToFirst(); 
+        		
+        		for (int i = 0; i < c.getCount(); i++)  
+        		{ 
+        			
+        			//on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        			Company stud = new Company();
+                     //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        			stud.setID(c.getInt(NUM_USER_ID));
+                    stud.setLastName(c.getString(NUM_USER_LASTNAME));
+                    stud.setFirstName(c.getString(NUM_USER_FIRSTNAME));
+                    stud.setEmail(c.getString(NUM_USER_MAIL));
+                    stud.setSchool(c.getString(NUM_USER_Company));
+                    stud.setPassword(c.getString(NUM_USER_Pwd));
+                    stud.setDescription(c.getString(NUM_USER_DESC));
+    	   
+        			liste[i]=stud; 
+        			c.moveToNext(); 
+        		} 
+        		return liste; 
+        	} 
+     }
 }

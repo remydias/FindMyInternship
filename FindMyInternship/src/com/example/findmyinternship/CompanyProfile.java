@@ -54,7 +54,7 @@ public class CompanyProfile extends Fragment {
         
         //Récupération du nom de la compagnie appelante
         TextView company = (TextView)mLinearLayout.findViewById(R.id.CompanyName);
-        TextView comppers = (TextView)mLinearLayout.findViewById(R.id.company_person);
+        TextView comppers = (TextView)mLinearLayout.findViewById(R.id.Company_person);
         TextView compdesc = (TextView)mLinearLayout.findViewById(R.id.prof_desc_label);
        // TextView companypers = (TextView)mLinearLayout.findViewById(R.id.company_person);
         Bundle b= this.getArguments();
@@ -107,7 +107,7 @@ public class CompanyProfile extends Fragment {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
              
-            ImageButton buttonImg = (ImageButton)getActivity().findViewById(R.id.Company_photo);
+            ImageButton buttonImg = (ImageButton)getActivity().findViewById(R.id.Student_photo);
             
             buttonImg.setImageBitmap(getResizedBitmap(BitmapFactory.decodeFile(picturePath),180,170));
          

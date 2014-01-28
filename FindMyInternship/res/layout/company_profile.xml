@@ -17,7 +17,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/company_person"
+            android:id="@+id/Company_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Company_photo"
@@ -30,8 +30,8 @@
             android:id="@+id/prof_desc_label"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/company_person"
-            android:layout_below="@+id/company_person"
+            android:layout_alignLeft="@+id/Company_person"
+            android:layout_below="@+id/Company_person"
             android:layout_marginTop="17dp"
             android:background="@drawable/border"
             android:padding="10dp"

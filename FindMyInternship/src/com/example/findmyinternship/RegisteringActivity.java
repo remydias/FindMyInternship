@@ -104,15 +104,25 @@ public class RegisteringActivity extends Activity{
           	        //On ouvre la base de données pour écrire dedans
           	        MainActivity.getStudBdd().open();
           	        
+          	        /* On va d'abord testé si l'étudiant existe déjà ou pas */
           	        //On insère l'étudiant que l'on vient de créer
           	        try {
-						MainActivity.getStudBdd().insertStudent(stud);
+          	        	if(MainActivity.getStudBdd().insertStudent(stud) == 0)
+          	        	{
+          	        		Toast.makeText(RegisteringActivity.this, "Cet étudiant existe déjà !", Toast.LENGTH_LONG).show();
+          	        	}
+          	        	else
+          	        	{
+          	        		MainActivity.getStudBdd().insertStudent(stud);
+          	        		Toast.makeText(RegisteringActivity.this, stud.getLastName()+" ajouté", Toast.LENGTH_LONG).show();
+          	        	}
+          	        		
 					} catch (NoSuchAlgorithmException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
           	        
-          	        Toast.makeText(RegisteringActivity.this, stud.getLastName()+" ajouté", Toast.LENGTH_LONG).show();
+          	        
           	        
           	        MainActivity.getStudBdd().close();
           	        
@@ -129,13 +139,21 @@ public class RegisteringActivity extends Activity{
             	        
             	        //On insère l'entreprise que l'on vient de créer
             	        try {
-							MainActivity.getCompBdd().insertCompany(comp);
+            	        	if(MainActivity.getCompBdd().insertCompany(comp)==0)
+            	        	{
+            	        		Toast.makeText(RegisteringActivity.this, "Cette compagnie existe déjà !", Toast.LENGTH_LONG).show();
+            	        	}
+            	        	else
+            	        	{
+            	        		MainActivity.getCompBdd().insertCompany(comp);
+            	        		Toast.makeText(RegisteringActivity.this, comp.getLastName()+" ajouté", Toast.LENGTH_LONG).show();
+            	        	}
 						} catch (NoSuchAlgorithmException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
             	        
-            	        Toast.makeText(RegisteringActivity.this, comp.getLastName()+" ajouté", Toast.LENGTH_LONG).show();
+            	        
             	        
             	        MainActivity.getCompBdd().close();
             	        

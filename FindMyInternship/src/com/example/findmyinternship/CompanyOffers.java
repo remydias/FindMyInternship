@@ -41,7 +41,7 @@ public class CompanyOffers extends Fragment{
         // if(company_name.length()<30)
         final String company_name = b.getString("name");
         
-        ListView l = (ListView)mLinearLayout.findViewById(R.id.listView1);
+        ListView l = (ListView)mLinearLayout.findViewById(R.id.listViewcompoff);
         
         //On récupère les offres en BDD
         MainActivity.getOffBdd().open();

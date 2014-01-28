@@ -1,13 +1,6 @@
 package com.example.findmyinternship;
 
-import java.io.FileNotFoundException;
-
-import java.io.InputStream;
 import java.util.Locale;
-
-import com.example.findmyinternship.ConnectStudentActivity.DrawerItemClickListener;
-import com.example.findmyinternship.ConnectStudentActivity.PlanetFragment;
-
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -16,9 +9,6 @@ import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -32,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -48,13 +37,12 @@ public class ConnectCompanyActivity extends Activity{
     private String[] mPlanetTitles;
     String company_name;
     String company_person;
-    Bundle b;
-    
+    Bundle b;    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connect_student);
+        setContentView(R.layout.activity_connect_company);
         
         //On récupère le nom de la company appelante
         b= getIntent().getExtras();
@@ -69,8 +57,7 @@ public class ConnectCompanyActivity extends Activity{
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.drawer_list_item, mPlanetTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // enable ActionBar app icon to behave as action to toggle nav drawer

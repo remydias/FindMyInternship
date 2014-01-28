@@ -26,7 +26,7 @@ public class ImagePickerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.company_profile);
         
-        ImageButton buttonImg = (ImageButton)findViewById(R.id.Company_photo);
+        ImageButton buttonImg = (ImageButton)findViewById(R.id.Student_photo);
  
  
         buttonImg.setOnClickListener(new OnClickListener() {

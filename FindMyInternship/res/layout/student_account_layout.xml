@@ -4,10 +4,97 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <ImageButton
+        android:id="@+id/imageButtonCROIX"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/croix" />
+
     <TextView
-        android:id="@+id/Company_description"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mon Compte" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Supprimer Votre Compte"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="21dp"
+        android:text="Ancien Password"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editTextOldPWD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextOldPWD"
+        android:layout_below="@+id/editTextOldPWD"
+        android:layout_marginTop="17dp"
+        android:text="Nouveau Password"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editTextNEWPWF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextNEWPWF"
+        android:layout_below="@+id/editTextNEWPWF"
+        android:layout_marginTop="23dp"
+        android:text="Confirmez"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editTextNEWPWDCONF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/buttonValModif"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextNEWPWDCONF"
+        android:layout_below="@+id/editTextNEWPWDCONF"
+        android:layout_marginTop="22dp"
+        android:text="@string/Validate" />
+        
+    </RelativeLayout>
 
 </LinearLayout>

@@ -7,6 +7,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 public class StudentBDD {
         private static final int VERSION_BDD = 1;
@@ -64,8 +66,31 @@ public class StudentBDD {
                 String encryptedString = new String(messageDigest.digest());
                 
                 values.put(USER_Pwd, encryptedString);
+                
+                if(this.getStudentBySchool(stud.getSchool()) == null)
+                {
+                	 return bdd.insert(USER_TABLE, null, values);
+                }                
+                else if(this.getStudentByName(stud.getLastName()) != null && tabContains(this.getStudentBySchool(stud.getSchool()), stud))
+                {
+                	return 0;
+                }
+                else
+                	 return bdd.insert(USER_TABLE, null, values);
                 //on insère l'objet dans la BDD via le ContentValues
-                return bdd.insert(USER_TABLE, null, values);
+               
+        }
+        
+        public boolean tabContains(Student[] tab, Student s)
+        {
+        	for(int i=0;i<tab.length;i++)
+        	{
+        		if(tab[i].getLastName().equals(s.getLastName())&& tab[i].getSchool().equals(s.getSchool()) && tab[i].getFirstName().equals(s.getFirstName()))
+        		{
+        			return true;
+        		}
+        	}
+        	return false;
         }
  
         public int updateStudent(int id, Student stud) throws NoSuchAlgorithmException{
@@ -97,6 +122,18 @@ public class StudentBDD {
                 return cursorToStudent(c);
         }
         
+        public Student getStudentByID(int ID){
+            //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+            Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_School,USER_Pwd}, USER_ID + " LIKE \"" + ID +"\"", null, null, null, null,null);
+            return cursorToStudent(c);
+    }
+        
+        public Student[] getStudentBySchool(String school){
+            //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+            Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_School,USER_Pwd}, USER_School + " LIKE \"" + school +"\"", null, null, null, null,null);
+            return cursorsToStudents(c);
+    }
+        
         public Student getStudentByMail(String mail){
                 //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
                 Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_LASTNAME, USER_FIRSTNAME, USER_MAIL, USER_School,USER_Pwd}, USER_MAIL + " LIKE \"" + mail +"\"", null, null, null, null,null);
@@ -126,4 +163,40 @@ public class StudentBDD {
                 //On retourne le livre
                 return stud;
         }
+        
+        public Student[] cursorsToStudents(Cursor c)
+    	{
+        	Student[] liste = new Student[c.getCount()]; 
+        	//si aucun élément n'a été retourné dans la requête, on renvoie null 
+        	if (c.getCount() == 0) 
+        	{ 
+        		Student s = new Student(); 
+        		Log.e("skat", "Aucune donnée a transtyper"); 
+        		return(null); 
+        
+        	} 
+        	else 
+        	{ 
+        		//Sinon on se place sur le premier élément 
+        		c.moveToFirst(); 
+        		
+        		for (int i = 0; i < c.getCount(); i++)  
+        		{ 
+        			
+        			//on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        			 Student stud = new Student();
+                     //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+                     stud.setID(c.getInt(NUM_USER_ID));
+                     stud.setLastName(c.getString(NUM_USER_LASTNAME));
+                     stud.setFirstName(c.getString(NUM_USER_FIRSTNAME));
+                     stud.setEmail(c.getString(NUM_USER_MAIL));
+                     stud.setSchool(c.getString(NUM_USER_School));
+                     stud.setPassword(c.getString(NUM_USER_Pwd));
+    	   
+        			liste[i]=stud; 
+        			c.moveToNext(); 
+        		} 
+        		return liste; 
+        	} 
+     }
 }

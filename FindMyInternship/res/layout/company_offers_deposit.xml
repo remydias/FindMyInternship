@@ -117,7 +117,7 @@
 
         <EditText
             android:id="@+id/salary_textfield_deposit"
-            android:layout_width="270dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/salary_textview_deposit"
             android:layout_below="@+id/salary_textview_deposit"
@@ -128,11 +128,18 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:layout_below="@+id/salary_textfield_deposit"
-             android:layout_marginRight="18dp"
-            android:layout_marginTop="26dp"
-            android:layout_alignRight="@+id/salary_textfield_deposit"
+            android:layout_alignRight="@+id/duration_textfield_deposit"
+            android:layout_below="@+id/salary_textfield_deposit"
+            android:layout_marginTop="30dp"
             android:text="@string/Validate" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button_deposit"
+            android:layout_toRightOf="@+id/salary_textfield_deposit"
+            android:text="K€" />
 
     </RelativeLayout>
 

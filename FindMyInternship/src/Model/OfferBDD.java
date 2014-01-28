@@ -107,6 +107,12 @@ public class OfferBDD {
                 Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_COMP,USER_TITLE, USER_DESC, USER_SKILLS, USER_PROFILE,USER_DURATION,USER_SALARY}, USER_COMP + " LIKE \"" + mail +"\"", null, null, null, null,null);
                 return cursorsToOffers(c);
         }
+        
+        public Offer[] getAllOffers(){
+            //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+            Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_COMP,USER_TITLE, USER_DESC, USER_SKILLS, USER_PROFILE,USER_DURATION,USER_SALARY}, null, null, null, null, null,null);
+            return cursorsToOffers(c);
+    }
  
         //Cette méthode permet de convertir un cursor en un livre
         private Offer cursorToOffer(Cursor c){

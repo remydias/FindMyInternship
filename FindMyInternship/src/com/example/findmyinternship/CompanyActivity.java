@@ -84,12 +84,15 @@ public class CompanyActivity extends Activity{
                 			  {
                 				  Intent intent = new Intent(CompanyActivity.this, ConnectCompanyActivity.class);
                 				  Bundle extras = new Bundle();
-                				  extras.putString("name", temp.getSchool());
-                				  extras.putString("cperson", temp.getLastName()+" "+temp.getFirstName());
-                				  extras.putString("desc", temp.getDescription());
-                				  intent.putExtras(extras);
-
-                				  startActivity(intent);
+                				  if(temp.getSchool() != null && temp.getLastName() != null && temp.getFirstName()!= null && temp.getDescription() != null)
+                				  {
+	                				  extras.putString("name", temp.getSchool());
+	                				  extras.putString("cperson", temp.getLastName()+" "+temp.getFirstName());
+	                				  extras.putString("desc", temp.getDescription());
+	                				  intent.putExtras(extras);
+	
+	                				  startActivity(intent);
+                				  }
                 			  }
                 			}
                 			  

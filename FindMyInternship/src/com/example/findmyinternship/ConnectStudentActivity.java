@@ -11,11 +11,14 @@ import com.example.findmyinternship.R.menu;
 import com.example.findmyinternship.R.string;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -33,8 +36,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-@SuppressLint("NewApi")
-
+@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class ConnectStudentActivity extends Activity {
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -43,12 +45,18 @@ public class ConnectStudentActivity extends Activity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mPlanetTitles;
-
+    String student_name;
+    String student_person;
+    Bundle b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connect_student);
+        
+        b= getIntent().getExtras();
+        student_name=b.getString("name");
+        student_person=b.getString("cperson");
 
         mTitle = mDrawerTitle = getTitle();
         mPlanetTitles = getResources().getStringArray(R.array.student_array);
@@ -142,53 +150,37 @@ public class ConnectStudentActivity extends Activity {
     }
 
     private void selectItem(int position) {
-        // update the main content by replacing fragments
-        /*Fragment fragment = new PlanetFragment();
-        Bundle args = new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-        // update selected item and title, then close the drawer
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);*/
-        
-       /* if(position== 0)
-        {
-            Intent intent = new Intent(ConnectStudentActivity.this, Profile.class);  
-        	startActivity(intent);
-        }*/
     	
     	Fragment fragment=null;
     	
     	if(position== 0)
     	{
-    		fragment = new Profile();
-        	
+    		fragment = new StudentProfile();
+    		fragment.setArguments(b);
+    		//fragment = new Profile();
     	}
     	else if(position==1)
     	{
     		fragment = new StudentAnnonces();
+    		fragment.setArguments(b);
     	}
     	else if(position==2)
     	{
     		fragment = new StudentSearch();
+    		fragment.setArguments(b);
     	}
     	else if(position==3)
     	{
     		fragment = new Student_account();
+    		fragment.setArguments(b);
     	}
     	else if(position==4)
     	{
     		fragment = new StudentHelp();
     	}
     	
-    	android.app.FragmentManager fragmentManager = getFragmentManager();
-    	final android.app.FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.content_frame, fragment);
+    	FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
         mDrawerList.setItemChecked(position, true);
         setTitle(mPlanetTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
