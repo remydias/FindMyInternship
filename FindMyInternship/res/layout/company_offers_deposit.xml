@@ -134,7 +134,7 @@
             android:text="@string/Validate" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/TV_Apply_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/button_deposit"

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textView1"
+            android:layout_below="@+id/TV_Apply_Title"
             android:padding="20dp" >
 
         </ListView>
@@ -32,7 +32,7 @@
         </SearchView>
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/TV_Apply_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -46,7 +46,7 @@
             android:id="@+id/listViewresult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignLeft="@+id/textView1"
+            android:layout_alignLeft="@+id/TV_Apply_Title"
             android:layout_below="@+id/searchView1"
             android:layout_marginTop="16dp" >
         </ListView>

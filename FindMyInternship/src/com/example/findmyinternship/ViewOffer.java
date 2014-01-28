@@ -35,7 +35,7 @@ public class ViewOffer extends Activity
         
 		setContentView(R.layout.view_offer);
         
-        Bundle b= getIntent().getExtras();
+        final Bundle b= getIntent().getExtras();
         
         TextView Comp = (TextView)findViewById(R.id.compname_view_offer);
         
@@ -52,6 +52,8 @@ public class ViewOffer extends Activity
         TextView salary = (TextView)findViewById(R.id.salary_view_offer);
         
         ImageButton back = (ImageButton)findViewById(R.id.backButton);
+        
+        ImageButton apply = (ImageButton)findViewById(R.id.imageButtonApplication);
         
         //ImageButton star = (ImageButton)findViewById(R.id.imgStar);
         
@@ -143,6 +145,17 @@ public class ViewOffer extends Activity
 	        		}
 	        	});
         }
+        
+        apply.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(ViewOffer.this, StudentApplication.class);
+          	  	intent.putExtras(b);
+          	  	startActivity(intent);
+			}
+		});
     }
 
 }

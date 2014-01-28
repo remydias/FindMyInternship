@@ -155,6 +155,7 @@ public class ConnectCompanyActivity extends Activity{
     	else if(position==2)
     	{
     		fragment = new CompanyApply();
+    		fragment.setArguments(b);
     	}
     	else if(position==3)
     	{

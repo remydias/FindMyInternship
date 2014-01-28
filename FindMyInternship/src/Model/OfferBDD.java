@@ -100,6 +100,12 @@ public class OfferBDD {
                 return cursorToOffer(c);
         }
         
+        public Offer getOfferByID(int ID){
+            //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+            Cursor c = bdd.query(USER_TABLE, new String[] {USER_ID, USER_COMP,USER_TITLE, USER_DESC, USER_SKILLS, USER_PROFILE,USER_DURATION,USER_SALARY}, USER_ID + " LIKE \"" + ID +"\"", null, null, null, null,null);
+            return cursorToOffer(c);
+    }
+        
         
         
         public Offer[] getOfferByComp(String mail){

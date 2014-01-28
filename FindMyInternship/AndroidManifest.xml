@@ -32,6 +32,7 @@
        	    <activity android:name="com.example.findmyinternship.StudentHelp"></activity>
        	    <activity android:name="com.example.findmyinternship.CompanyOffersDeposit"></activity>
        	    <activity android:name="com.example.findmyinternship.ViewOffer"></activity>
+       	    <activity android:name="com.example.findmyinternship.StudentApplication"></activity>
 	        
         
     	</application>
